@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaza Relief - Support the People of Gaza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #0056b3;
+            --secondary: #e63946;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .top-bar p {
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selector span {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .language-selector span.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1582211594533-268f4d7e3b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .video-link:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+        }
+
+        .alert-banner {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Quick Donate Section */
+        .quick-donate {
+            background-color: var(--light);
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .quick-donate h2 {
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quick-donate-btn {
+            padding: 15px 25px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-donate-btn:hover {
+            background-color: #004494;
+            transform: translateY(-3px);
+        }
+
+        /* Donation Section */
+        .donation-section {
+            padding: 60px 5%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .donation-options {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .donation-type {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .donation-type button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background-color: #e9ecef;
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .donation-type button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .amount-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .amount-option {
+            padding: 15px;
+            text-align: center;
+            background-color: white;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .amount-option:hover {
+            border-color: var(--primary);
+        }
+
+        .amount-option.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .custom-amount {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        .donate-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--success);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #218838;
+        }
+
+        .donation-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-box {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .info-box a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Emergency Section */
+        .emergency-section {
+            background-color: var(--secondary);
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .emergency-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .emergency-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .emergency-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: white;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .emergency-button:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 5px 10px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .amount-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quick-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quick-donate-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <p>Assure that no woman dies giving birth</p>
+        </div>
+        <nav class="navbar">
+            <a href="#" class="logo">GazaRelief</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Who we are</a></li>
+                <li><a href="#">What we do</a></li>
+                <li><a href="#">Emergencies</a></li>
+                <li><a href="#">Latest</a></li>
+                <li><a href="#">Data</a></li>
+                <li><a href="#">Donate</a></li>
+            </ul>
+            <div class="language-selector">
+                <span class="active">EN</span>
+                <span>ES</span>
+                <span>AR</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Ceasefire in Gaza: Pregnant women and children need help</h1>
+        <p>Support these fantastically resilient people who've suffered so much</p>
+        <a href="https://youtube.com/shorts/U0Nbr16wuKI?si=4oYhvYDnCZKO0jHb" class="video-link" target="_blank">
+            <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+    </section>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <p>GAZA ALERT - Most vulnerable need your help now</p>
+    </div>
+
+    <!-- Quick Donate Section -->
+    <section class="quick-donate">
+        <h2>Quick Donate</h2>
+        <div class="quick-buttons">
+            <button class="quick-donate-btn" data-amount="5">$5</button>
+            <button class="quick-donate-btn" data-amount="15">$15</button>
+            <button class="quick-donate-btn" data-amount="25">$25</button>
+            <button class="quick-donate-btn" data-amount="50">$50</button>
+            <button class="quick-donate-btn" data-amount="100">$100</button>
+            <button class="quick-donate-btn" data-amount="250">$250</button>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation-section">
+        <div class="section-title">
+            <h2>Secure Donation</h2>
+            <p>Your contribution will provide critical aid to the people of Gaza</p>
+        </div>
+        <div class="donation-container">
+            <div class="donation-options">
+                <div class="donation-type">
+                    <button class="active">Give once</button>
+                    <button>Monthly</button>
+                </div>
+                <div class="amount-options">
+                    <div class="amount-option" data-amount="10">$10</div>
+                    <div class="amount-option" data-amount="25">$25</div>
+                    <div class="amount-option" data-amount="50">$50</div>
+                    <div class="amount-option" data-amount="100">$100</div>
+                    <div class="amount-option" data-amount="250">$250</div>
+                    <div class="amount-option selected" data-amount="500">$500</div>
+                </div>
+                <input type="text" class="custom-amount" placeholder="$100">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="dedicate">
+                    <label for="dedicate">Dedicate this donation</label>
+                </div>
+                <button class="donate-button" id="donateButton">Donate Now</button>
+            </div>
+            <div class="donation-info">
+                <div class="info-box">
+                    <h3>Your donation will help provide:</h3>
+                    <ul>
+                        <li>Emergency medical supplies</li>
+                        <li>Food and clean water</li>
+                        <li>Shelter and blankets</li>
+                        <li>Support for pregnant women</li>
+                        <li>Psychological support for children</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>Frequently Asked Questions</h3>
+                    <ul>
+                        <li><a href="#">Is my donation secure?</a></li>
+                        <li><a href="#">Can I cancel my recurring donation?</a></li>
+                        <li><a href="#">For tax deductible donations in the USA click here</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section class="emergency-section">
+        <h2>Emergency in Gaza</h2>
+        <p>Thousands of families are displaced and in urgent need of food, water, and medical assistance. Your donation can save lives today.</p>
+        <a href="#" class="emergency-button" id="emergencyDonate">Donate Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><a href="#">General Inquiries</a></li>
+                    <li><a href="#">Media Relations</a></li>
+                    <li><a href="#">Partnerships</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Financial Reports</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>US Donors</h3>
+                <p>Are you based in the United States? Donate through our support committee to make a tax-deductible donation.</p>
+                <a href="#">usaforgazarelief.org</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>2024 © Gaza Relief Fund. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to redirect to PayPal with the specified amount
+        function redirectToPayPal(amountUSD) {
+            // Using the provided PayPal donation link with the amount parameter
+            window.location.href = `https://www.paypal.com/donate?hosted_button_id=2AX8W9V92VLM6&amount=${amountUSD}`;
+        }
+
+        // Donation type toggle
+        const donationTypeButtons = document.querySelectorAll('.donation-type button');
+        donationTypeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                donationTypeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Amount selection in donation form
+        const amountOptions = document.querySelectorAll('.amount-option');
+        amountOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                amountOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                document.querySelector('.custom-amount').value = '';
+            });
+        });
+
+        // Custom amount input
+        const customAmount = document.querySelector('.custom-amount');
+        customAmount.addEventListener('focus', () => {
+            amountOptions.forEach(opt => opt.classList.remove('selected'));
+        });
+
+        // Quick donate buttons functionality
+        const quickDonateButtons = document.querySelectorAll('.quick-donate-btn');
+        quickDonateButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const amount = button.getAttribute('data-amount');
+                redirectToPayPal(amount);
+            });
+        });
+
+        // Main donate button functionality
+        const donateButton = document.getElementById('donateButton');
+        donateButton.addEventListener('click', () => {
+            // Get selected amount
+            let amount = '';
+            const selectedAmount = document.querySelector('.amount-option.selected');
+            
+            if (selectedAmount) {
+                amount = selectedAmount.getAttribute('data-amount');
+            } else if (customAmount.value) {
+                // Extract numbers only
+                amount = customAmount.value.replace(/[^0-9.]/g, '');
+            }
+            
+            if (amount) {
+                redirectToPayPal(amount);
+            } else {
+                alert('Please select or enter a donation amount.');
+            }
+        });
+
+        // Emergency donate button
+        const emergencyDonate = document.getElementById('emergencyDonate');
+        emergencyDonate.addEventListener('click', (e) => {
+            e.preventDefault();
+            redirectToPayPal(100); // Default emergency donation of $100
+        });
+    </script>
+</body>
+</html>
