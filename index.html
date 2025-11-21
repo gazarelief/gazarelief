@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +26,21 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+        }
+
+        /* RTL Support for Arabic */
+        body[dir="rtl"] {
+            text-align: right;
+        }
+
+        body[dir="rtl"] .info-box li:before {
+            left: auto;
+            right: 0;
+        }
+
+        body[dir="rtl"] .checkbox-container input {
+            margin-right: 0;
+            margin-left: 10px;
         }
 
         /* Header Styles */
@@ -72,6 +87,11 @@
             margin-left: 25px;
         }
 
+        body[dir="rtl"] .nav-links li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
@@ -91,10 +111,14 @@
         .language-selector span {
             cursor: pointer;
             font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: all 0.3s;
         }
 
         .language-selector span.active {
-            color: var(--primary);
+            background-color: var(--primary);
+            color: white;
         }
 
         /* Hero Section */
@@ -502,48 +526,47 @@
         }
     </style>
 </head>
-<body>
+<body dir="ltr">
     <!-- Header -->
     <header>
         <div class="top-bar">
-            <p>Assure that no woman dies giving birth</p>
+            <p id="topBarText">Assure that no woman dies giving birth</p>
         </div>
         <nav class="navbar">
             <a href="#" class="logo">GazaRelief</a>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Who we are</a></li>
-                <li><a href="#">What we do</a></li>
-                <li><a href="#">Emergencies</a></li>
-                <li><a href="#">Latest</a></li>
-                <li><a href="#">Data</a></li>
-                <li><a href="#">Donate</a></li>
+                <li><a href="#" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#" data-en="Who we are" data-ar="من نحن">Who we are</a></li>
+                <li><a href="#" data-en="What we do" data-ar="ماذا نفعل">What we do</a></li>
+                <li><a href="#" data-en="Emergencies" data-ar="حالات الطوارئ">Emergencies</a></li>
+                <li><a href="#" data-en="Latest" data-ar="آخر الأخبار">Latest</a></li>
+                <li><a href="#" data-en="Data" data-ar="البيانات">Data</a></li>
+                <li><a href="#" data-en="Donate" data-ar="تبرع">Donate</a></li>
             </ul>
             <div class="language-selector">
-                <span class="active">EN</span>
-                <span>ES</span>
-                <span>AR</span>
+                <span class="active" id="langEn">EN</span>
+                <span id="langAr">AR</span>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Ceasefire in Gaza: Pregnant women and children need help</h1>
-        <p>Support these fantastically resilient people who've suffered so much</p>
+        <h1 id="heroTitle">Ceasefire in Gaza: Pregnant women and children need help</h1>
+        <p id="heroText">Support these fantastically resilient people who've suffered so much</p>
         <a href="https://youtube.com/shorts/U0Nbr16wuKI?si=4oYhvYDnCZKO0jHb" class="video-link" target="_blank">
-            <i class="fab fa-youtube"></i> Watch on YouTube
+            <i class="fab fa-youtube"></i> <span id="watchVideo">Watch on YouTube</span>
         </a>
     </section>
 
     <!-- Alert Banner -->
     <div class="alert-banner">
-        <p>GAZA ALERT - Most vulnerable need your help now</p>
+        <p id="alertText">GAZA ALERT - Most vulnerable need your help now</p>
     </div>
 
     <!-- Quick Donate Section -->
     <section class="quick-donate">
-        <h2>Quick Donate</h2>
+        <h2 id="quickDonateTitle">Quick Donate</h2>
         <div class="quick-buttons">
             <button class="quick-donate-btn" data-amount="5">$5</button>
             <button class="quick-donate-btn" data-amount="15">$15</button>
@@ -557,14 +580,14 @@
     <!-- Donation Section -->
     <section class="donation-section">
         <div class="section-title">
-            <h2>Secure Donation</h2>
-            <p>Your contribution will provide critical aid to the people of Gaza</p>
+            <h2 id="secureDonationTitle">Secure Donation</h2>
+            <p id="donationSubtitle">Your contribution will provide critical aid to the people of Gaza</p>
         </div>
         <div class="donation-container">
             <div class="donation-options">
                 <div class="donation-type">
-                    <button class="active">Give once</button>
-                    <button>Monthly</button>
+                    <button class="active" data-en="Give once" data-ar="تبرع مرة واحدة">Give once</button>
+                    <button data-en="Monthly" data-ar="شهري">Monthly</button>
                 </div>
                 <div class="amount-options">
                     <div class="amount-option" data-amount="10">$10</div>
@@ -577,28 +600,28 @@
                 <input type="text" class="custom-amount" placeholder="$100">
                 <div class="checkbox-container">
                     <input type="checkbox" id="dedicate">
-                    <label for="dedicate">Dedicate this donation</label>
+                    <label for="dedicate" data-en="Dedicate this donation" data-ar="خصص هذا التبرع">Dedicate this donation</label>
                 </div>
-                <button class="donate-button" id="donateButton">Donate Now</button>
+                <button class="donate-button" id="donateButton" data-en="Donate Now" data-ar="تبرع الآن">Donate Now</button>
             </div>
             <div class="donation-info">
                 <div class="info-box">
-                    <h3>Your donation will help provide:</h3>
+                    <h3 id="donationHelpTitle" data-en="Your donation will help provide:" data-ar="تبرعك سيساعد في توفير:">Your donation will help provide:</h3>
                     <ul>
-                        <li>Emergency medical supplies</li>
-                        <li>Food and clean water</li>
-                        <li>Shelter and blankets</li>
-                        <li>Support for pregnant women</li>
-                        <li>Psychological support for children</li>
+                        <li data-en="Emergency medical supplies" data-ar="الإمدادات الطبية الطارئة">Emergency medical supplies</li>
+                        <li data-en="Food and clean water" data-ar="الغذاء والمياه النظيفة">Food and clean water</li>
+                        <li data-en="Shelter and blankets" data-ar="المأأ والبطانيات">Shelter and blankets</li>
+                        <li data-en="Support for pregnant women" data-ar="الدعم للنساء الحوامل">Support for pregnant women</li>
+                        <li data-en="Psychological support for children" data-ar="الدعم النفسي للأطفال">Psychological support for children</li>
                     </ul>
                 </div>
                 <div class="info-box">
-                    <h3>Frequently Asked Questions</h3>
+                    <h3 data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h3>
                     <ul>
-                        <li><a href="#">Is my donation secure?</a></li>
-                        <li><a href="#">Can I cancel my recurring donation?</a></li>
-                        <li><a href="#">For tax deductible donations in the USA click here</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#" data-en="Is my donation secure?" data-ar="هل تبرعي آمن؟">Is my donation secure?</a></li>
+                        <li><a href="#" data-en="Can I cancel my recurring donation?" data-ar="هل يمكنني إلغاء تبرعي المتكرر؟">Can I cancel my recurring donation?</a></li>
+                        <li><a href="#" data-en="For tax deductible donations in the USA click here" data-ar="للتبرعات المعفاة من الضرائب في الولايات المتحدة انقر هنا">For tax deductible donations in the USA click here</a></li>
+                        <li><a href="#" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -607,16 +630,16 @@
 
     <!-- Emergency Section -->
     <section class="emergency-section">
-        <h2>Emergency in Gaza</h2>
-        <p>Thousands of families are displaced and in urgent need of food, water, and medical assistance. Your donation can save lives today.</p>
-        <a href="#" class="emergency-button" id="emergencyDonate">Donate Now</a>
+        <h2 id="emergencyTitle" data-en="Emergency in Gaza" data-ar="حالة الطوارئ في غزة">Emergency in Gaza</h2>
+        <p id="emergencyText" data-en="Thousands of families are displaced and in urgent need of food, water, and medical assistance. Your donation can save lives today." data-ar="آلاف العائلات مشردة وبحاجة ماسة للغذاء والماء والمساعدة الطبية. تبرعك يمكن أن ينقذ الأرواح اليوم.">Thousands of families are displaced and in urgent need of food, water, and medical assistance. Your donation can save lives today.</p>
+        <a href="#" class="emergency-button" id="emergencyDonate" data-en="Donate Now" data-ar="تبرع الآن">Donate Now</a>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Stay Connected</h3>
+                <h3 data-en="Stay Connected" data-ar="ابق على اتصال">Stay Connected</h3>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -625,33 +648,90 @@
                 </div>
             </div>
             <div class="footer-column">
-                <h3>Contact Us</h3>
+                <h3 data-en="Contact Us" data-ar="اتصل بنا">Contact Us</h3>
                 <ul>
-                    <li><a href="#">General Inquiries</a></li>
-                    <li><a href="#">Media Relations</a></li>
-                    <li><a href="#">Partnerships</a></li>
+                    <li><a href="#" data-en="General Inquiries" data-ar="الاستفسارات العامة">General Inquiries</a></li>
+                    <li><a href="#" data-en="Media Relations" data-ar="العلاقات الإعلامية">Media Relations</a></li>
+                    <li><a href="#" data-en="Partnerships" data-ar="الشراكات">Partnerships</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Legal</h3>
+                <h3 data-en="Legal" data-ar="قانوني">Legal</h3>
                 <ul>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Financial Reports</a></li>
+                    <li><a href="#" data-en="Terms of Use" data-ar="شروط الاستخدام">Terms of Use</a></li>
+                    <li><a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a></li>
+                    <li><a href="#" data-en="Financial Reports" data-ar="التقارير المالية">Financial Reports</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>US Donors</h3>
-                <p>Are you based in the United States? Donate through our support committee to make a tax-deductible donation.</p>
+                <h3 data-en="US Donors" data-ar="المتبرعون الأمريكيون">US Donors</h3>
+                <p data-en="Are you based in the United States? Donate through our support committee to make a tax-deductible donation." data-ar="هل تقيم في الولايات المتحدة؟ تبرع من خلال لجنة الدعم الخاصة بنا لتقديم تبرع معفى من الضرائب.">Are you based in the United States? Donate through our support committee to make a tax-deductible donation.</p>
                 <a href="#">usaforgazarelief.org</a>
             </div>
         </div>
         <div class="copyright">
-            <p>2024 © Gaza Relief Fund. All rights reserved.</p>
+            <p id="copyrightText" data-en="2024 © Gaza Relief Fund. All rights reserved." data-ar="2024 © صندوق غزة للإغاثة. جميع الحقوق محفوظة.">2024 © Gaza Relief Fund. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Language management
+        let currentLanguage = 'en';
+        
+        // Function to switch language
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update HTML direction
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update language selector
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            document.getElementById('langAr').classList.toggle('active', lang === 'ar');
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'ar') {
+                    element.textContent = element.getAttribute('data-ar');
+                }
+            });
+            
+            // Update elements without data attributes
+            if (lang === 'en') {
+                document.getElementById('topBarText').textContent = 'Assure that no woman dies giving birth';
+                document.getElementById('heroTitle').textContent = 'Ceasefire in Gaza: Pregnant women and children need help';
+                document.getElementById('heroText').textContent = 'Support these fantastically resilient people who\'ve suffered so much';
+                document.getElementById('watchVideo').textContent = 'Watch on YouTube';
+                document.getElementById('alertText').textContent = 'GAZA ALERT - Most vulnerable need your help now';
+                document.getElementById('quickDonateTitle').textContent = 'Quick Donate';
+                document.getElementById('secureDonationTitle').textContent = 'Secure Donation';
+                document.getElementById('donationSubtitle').textContent = 'Your contribution will provide critical aid to the people of Gaza';
+                document.getElementById('donationHelpTitle').textContent = 'Your donation will help provide:';
+                document.getElementById('emergencyTitle').textContent = 'Emergency in Gaza';
+                document.getElementById('emergencyText').textContent = 'Thousands of families are displaced and in urgent need of food, water, and medical assistance. Your donation can save lives today.';
+                document.getElementById('copyrightText').textContent = '2024 © Gaza Relief Fund. All rights reserved.';
+            } else if (lang === 'ar') {
+                document.getElementById('topBarText').textContent = 'ضمان عدم وفاة أي امرأة أثناء الولادة';
+                document.getElementById('heroTitle').textContent = 'وقف إطلاق النار في غزة: النساء الحوامل والأطفال بحاجة إلى المساعدة';
+                document.getElementById('heroText').textContent = 'ادعم هؤلاء الأشخاص المقاومين بشكل رائع الذين عانوا كثيرًا';
+                document.getElementById('watchVideo').textContent = 'شاهد على يوتيوب';
+                document.getElementById('alertText').textContent = 'تنبيه غزة - الأكثر ضعفًا يحتاجون مساعدتك الآن';
+                document.getElementById('quickDonateTitle').textContent = 'تبرع سريع';
+                document.getElementById('secureDonationTitle').textContent = 'تبرع آمن';
+                document.getElementById('donationSubtitle').textContent = 'مساهمتك ستوفر المساعدة الحرجة لشعب غزة';
+                document.getElementById('donationHelpTitle').textContent = 'تبرعك سيساعد في توفير:';
+                document.getElementById('emergencyTitle').textContent = 'حالة الطوارئ في غزة';
+                document.getElementById('emergencyText').textContent = 'آلاف العائلات مشردة وبحاجة ماسة للغذاء والماء والمساعدة الطبية. تبرعك يمكن أن ينقذ الأرواح اليوم.';
+                document.getElementById('copyrightText').textContent = '2024 © صندوق غزة للإغاثة. جميع الحقوق محفوظة.';
+            }
+        }
+        
+        // Language selector event listeners
+        document.getElementById('langEn').addEventListener('click', () => switchLanguage('en'));
+        document.getElementById('langAr').addEventListener('click', () => switchLanguage('ar'));
+        
         // Function to redirect to PayPal with the specified amount
         function redirectToPayPal(amountUSD) {
             // Using the provided PayPal donation link with the amount parameter
@@ -709,7 +789,7 @@
             if (amount) {
                 redirectToPayPal(amount);
             } else {
-                alert('Please select or enter a donation amount.');
+                alert(currentLanguage === 'en' ? 'Please select or enter a donation amount.' : 'الرجاء تحديد أو إدخال مبلغ التبرع.');
             }
         });
 
